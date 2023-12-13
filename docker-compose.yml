@@ -1,0 +1,17 @@
+version: '3.1'
+services:
+  h2db:
+      image: oscarfonts/h2
+      ports:
+        - "8082:8082"
+        - "1521:1521"
+      environment:
+        - H2_OPTIONS=-ifNotExists
+      volumes:
+        - ./data:/opt/h2-data
+
+  test_service:
+    build: ./
+    container_name: test_project
+    ports:
+      - "8080:8080"testproject-test_service
